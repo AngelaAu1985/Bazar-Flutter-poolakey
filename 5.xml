@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ir.cafebazaar.flutter_poolakey">
+
+    <!-- ======================================== -->
+    <!-- 1. بررسی وجود کافه‌بازار (Queries) -->
+    <!-- ======================================== -->
+    <queries>
+        <!-- بررسی نصب بودن اپ کافه‌بازار -->
+        <package android:name="com.farsitel.bazaar" />
+        
+        <!-- اختیاری: بررسی امکان پرداخت -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="bazaar" android:host="payment" />
+        </intent>
+    </queries>
+
+    <!-- ======================================== -->
+    <!-- 2. تنظیمات اپلیکیشن -->
+    <!-- ======================================== -->
+    <application>
+
+        <!-- 
+        توجه: PaymentActivity در نسخه جدید SDK حذف شده است.
+        تمام منطق خرید در FlutterPoolakeyPlugin با ActivityResultLauncher مدیریت می‌شود.
+        بنابراین نیازی به تعریف Activity در manifest نیست.
+        -->
+
+        <!-- 
+        اگر در آینده نیاز به Activity برای نمایش UI سفارشی داشتید، از این الگو استفاده کنید:
+        
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:noHistory="true"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:enabled="true" />
+        -->
+
+    </application>
+
+</manifest>
+
+<activity
+    android:name=".PaymentActivity"
+    android:exported="false"
+    android:launchMode="singleTask"
+    android:noHistory="true"
+    android:theme="@android:style/Theme.NoDisplay"
+    android:enabled="true" />
+
+
